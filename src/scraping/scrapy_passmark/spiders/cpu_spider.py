@@ -31,13 +31,11 @@ class CPUSpider(Spider):
         "SCHEDULER_MEMORY_QUEUE": "scrapy.squeues.FifoMemoryQueue",
         "RETRY_TIMES": 0,
         "LOG_LEVEL": "INFO",
-        # "LOG_LEVEL": "DEBUG",
         "ITEM_PIPELINES": {
             "scrapy_passmark.pipelines.cpu_pipelines.CPUItemPipeline": 100,
         },
         "CLOSESPIDER_ERRORCOUNT": 1,
         "DOWNLOAD_TIMEOUT": 600,
-        "DOWNLOAD_DELAY": 0.25,
     }
 
     def parse(self, response):
@@ -176,6 +174,7 @@ class CPUSpider(Spider):
                     yield pricing_history_item
 
             elif "var distributionData" in script_full:
+                script_full = script_full.replace(', color: "blue"', "")
                 data_points_match = re.search(
                     r"dataPoints\s*:\s*\[(.*?)\]", script_full, re.DOTALL
                 )

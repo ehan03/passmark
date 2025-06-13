@@ -85,10 +85,10 @@ class CPUItemPipeline:
         pricing_histories_df = pricing_histories_df[["cpu_id", "timestamp", "price"]]
 
         # Save to CSV files
-        cpus_df.to_csv(os.path.join(RAW_DATA_DIR, "cpus.csv"), index=False)
+        cpus_df.to_csv(os.path.join(RAW_DATA_DIR, "cpu", "cpus.csv"), index=False)
         distributions_df.to_csv(
-            os.path.join(RAW_DATA_DIR, "cpu_mark_distributions.csv"), index=False
+            os.path.join(RAW_DATA_DIR, "cpu", "cpu_mark_distributions.csv"), index=False
         )
         pricing_histories_df.to_csv(
-            os.path.join(RAW_DATA_DIR, "cpu_pricing_histories.csv"), index=False
+            os.path.join(RAW_DATA_DIR, "cpu", "cpu_pricing_histories.csv"), index=False
         )
